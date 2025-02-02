@@ -39,4 +39,12 @@ public interface EmployeeMapper {
      * @param employee
      */
     void update(Employee employee);//由于动态，去Mapper.xml设置
+
+    /**
+     * 根据id查询员工信息
+     * @param id
+     * @return
+     */
+    @Select("select * from sky_take_out.employee where id = #{id}")
+    Employee getById(Long id);
 }
