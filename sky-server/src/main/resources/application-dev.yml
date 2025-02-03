@@ -6,3 +6,8 @@ sky:
     database: sky_take_out
     username: root
     password: "l#z51198209psql"
+  alioss:
+    endpoint: oss-ap-southeast-1.aliyuncs.com
+    access-key-id: LTAI5tC4DE2NAbaSM92e1iE1
+    access-key-secret: XuUHWeg5apxMKJOcHHz5TopuGJ6Olw
+    bucket-name: lvshrd
