@@ -29,7 +29,7 @@ public interface DishService {
     void deleteBatch(List<Long> ids);
 
     /**
-     * 根据id查询套餐
+     * 根据id查询菜品
      *
      * @param id
      * @return

@@ -124,7 +124,7 @@ public class DishServiceImpl implements DishService {
     }
 
     /**
-     *
+     *根据id查询菜品
      * @param id
      * @return
      */
