@@ -65,4 +65,10 @@ public interface DishMapper {
      */
     @AutoFill(value = OperationType.UPDATE)
     void editById(Dish dish);
+
+    /**
+     * 根据类型id查询菜品
+     * @param dish
+     */
+    List<Dish> list(Dish dish);
 }
