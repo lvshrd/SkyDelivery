@@ -9,6 +9,7 @@
         values (#{categoryId}, #{name}, #{price}, #{status}, #{description}, #{image}, #{createTime}, #{updateTime},
                 #{createUser}, #{updateUser})
     </insert>
+
     <select id="pageQuery" resultType="com.sky.vo.SetmealVO">
          select s.* , c.name as categoryName from setmeal s left join category c on s.category_id = c.id
          <where>
@@ -24,5 +25,12 @@
          </where>
          order by s.create_time desc
     </select>
+
+    <delete id="deleteByIds">
+        delete from sky_take_out.setmeal where id in
+        <foreach collection="ids" open="(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
+    </delete>
 
 </mapper>
