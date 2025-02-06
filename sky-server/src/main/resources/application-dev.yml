@@ -11,3 +11,9 @@ sky:
     access-key-id: LTAI5tC4DE2NAbaSM92e1iE1
     access-key-secret: XuUHWeg5apxMKJOcHHz5TopuGJ6Olw
     bucket-name: lvshrd
+  redis:
+    host: localhost
+    port: 6379
+    database: 1
+#    database默认DB0
+#    password:
