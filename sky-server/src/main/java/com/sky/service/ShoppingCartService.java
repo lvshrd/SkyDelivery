@@ -17,4 +17,15 @@ public interface ShoppingCartService {
      * @return
      */
     List<ShoppingCart> showShoppingCart();
+
+    /**
+     * 删除购物车某个项目
+     * @param shoppingCartDTO
+     */
+    void deleteItem(ShoppingCartDTO shoppingCartDTO);
+
+    /**
+     *清空购物车
+     */
+    void clean();
 }

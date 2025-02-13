@@ -31,4 +31,10 @@ public interface ShoppingCartMapper {
     @Insert("insert into sky_take_out.shopping_cart(name, image, user_id, dish_id, setmeal_id, dish_flavor, number, amount, create_time) "+
     "values (#{name},#{image},#{userId},#{dishId},#{setmealId},#{dishFlavor},#{number},#{amount},#{createTime})")
     void insert(ShoppingCart shoppingCart);
+
+    /**
+     * 删除购物车某个项目
+     * @param shoppingCart
+     */
+    void deleteItem(ShoppingCart shoppingCart);
 }
