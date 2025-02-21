@@ -56,3 +56,8 @@ sky:
   wechat:
     appid: ${sky.wechat.appid}
     secret: ${sky.wechat.secret}
+
+  shop:
+    address: 南京市玄武区孝陵卫街道200号
+  google:
+    key: AIzaSyCRwqa4Rhu9RXfNpu3dnLcXGo4wGwqUzhM

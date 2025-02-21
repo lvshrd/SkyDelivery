@@ -49,6 +49,8 @@ public class HttpClientUtil {
             }
             URI uri = builder.build();
 
+            System.out.println("请求URL：" + uri.toString());
+
             //创建GET请求
             HttpGet httpGet = new HttpGet(uri);
 
@@ -175,5 +177,6 @@ public class HttpClientUtil {
                 .setConnectionRequestTimeout(TIMEOUT_MSEC)
                 .setSocketTimeout(TIMEOUT_MSEC).build();
     }
+
 
 }

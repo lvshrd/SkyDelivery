@@ -43,4 +43,12 @@ public interface OrderMapper {
      * @param ordersPageQueryDTO
      */
     Page<Orders> pageQuery(OrdersPageQueryDTO ordersPageQueryDTO);
+
+    /**
+     * 各个状态的订单数量统计
+     * @param statusConstant
+     * @return
+     */
+    @Select("select count(id) from sky_take_out.orders where status=#{statusConstant}")
+    Integer countStatus(Integer statusConstant);
 }
