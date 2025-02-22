@@ -1,12 +1,16 @@
 package com.sky.service.impl;
 
+import com.sky.dto.GoodsSalesDTO;
 import com.sky.entity.Orders;
+import com.sky.mapper.OrderDetailMapper;
 import com.sky.mapper.OrderMapper;
 import com.sky.mapper.UserMapper;
 import com.sky.service.ReportService;
 import com.sky.vo.OrderReportVO;
+import com.sky.vo.SalesTop10ReportVO;
 import com.sky.vo.TurnoverReportVO;
 import com.sky.vo.UserReportVO;
+import io.swagger.models.auth.In;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +23,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -28,6 +33,8 @@ public class ReportServiceImpl implements ReportService {
     private OrderMapper orderMapper;
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private OrderDetailMapper orderDetailMapper;
 
      /**
      * 统计指定时间区域内的营业额
@@ -147,5 +154,27 @@ public class ReportServiceImpl implements ReportService {
 
         map.put("status",status);
         return orderMapper.countByMap(map);
+    }
+
+    /**
+     * 统计指定时间区域内的销量前十
+     * @param beginDate
+     * @param endDate
+     * @return
+     */
+    public SalesTop10ReportVO getSalesTop10(LocalDate beginDate, LocalDate endDate) {
+        LocalDateTime beginTime = LocalDateTime.of(beginDate, LocalTime.MIN);
+        LocalDateTime endTime = LocalDateTime.of(endDate, LocalTime.MAX);
+        List<GoodsSalesDTO> salesTop10 = orderMapper.getSalesTop10(beginTime, endTime);
+
+        List<String> listName = salesTop10.stream().map(GoodsSalesDTO::getName).collect(Collectors.toList());
+        String nameList = StringUtils.join(listName, ",");
+        List<Integer> listNumber = salesTop10.stream().map(GoodsSalesDTO::getNumber).collect(Collectors.toList());
+        String numberList = StringUtils.join(listNumber, ",");
+
+        SalesTop10ReportVO salesTop10ReportVO = new SalesTop10ReportVO();
+        salesTop10ReportVO.setNameList(nameList);
+        salesTop10ReportVO.setNumberList(numberList);
+        return salesTop10ReportVO;
     }
 }
