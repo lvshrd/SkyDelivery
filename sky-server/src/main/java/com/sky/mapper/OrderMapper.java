@@ -6,6 +6,8 @@ import com.sky.entity.Orders;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.Map;
+
 @Mapper
 public interface OrderMapper {
 
@@ -51,4 +53,11 @@ public interface OrderMapper {
      */
     @Select("select count(id) from sky_take_out.orders where status=#{statusConstant}")
     Integer countStatus(Integer statusConstant);
+
+    /**
+     * 动态统计营业数据
+     * @param map
+     * @return
+     */
+    Double sumByMap(Map map);
 }
