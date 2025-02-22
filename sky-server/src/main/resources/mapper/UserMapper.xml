@@ -8,4 +8,16 @@
             values (#{openid},#{name},#{phone},#{sex},#{idNumber},#{avatar},#{createTime})
     </insert>
 
+    <select id="countByMap" resultType="java.lang.Integer">
+        select count(id) from sky_take_out.user
+        <where>
+            <if test="beginDate">
+                create_time &gt; #{beginDate}
+            </if>
+            <if test="endDate">
+                create_time &lt; #{endDate}
+            </if>
+        </where>
+    </select>
+
 </mapper>
