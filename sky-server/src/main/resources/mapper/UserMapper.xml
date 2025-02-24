@@ -15,7 +15,7 @@
                 create_time &gt; #{beginDate}
             </if>
             <if test="endDate">
-                create_time &lt; #{endDate}
+                and create_time &lt; #{endDate}
             </if>
         </where>
     </select>
